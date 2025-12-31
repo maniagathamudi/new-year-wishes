@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Goodbye 2025 | Welcome 2026</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+  color: #ffffff;
+  overflow-x: hidden;
+}
+
+/* ===== LOADER ===== */
+#loader {
+  position: fixed;
+  inset: 0;
+  background: #0f2027;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+#loader h1 {
+  font-size: 22px;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.4; }
+  50% { opacity: 1; }
+  100% { opacity: 0.4; }
+}
+
+/* ===== MAIN APP ===== */
+#app {
+  display: none;
+  padding: 60px 20px;
+  min-height: 100vh;
+  animation: fadeIn 1.2s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ===== HERO ===== */
+.hero {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.year {
+  font-size: 48px;
+  letter-spacing: 2px;
+}
+
+.old { animation: slideLeft 1.5s forwards; }
+.new { animation: slideRight 1.5s forwards; }
+
+.subtitle {
+  margin-top: 10px;
+  opacity: 0.85;
+}
+
+@keyframes slideLeft {
+  from { transform: translateX(-120%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes slideRight {
+  from { transform: translateX(120%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+/* ===== INTRO ===== */
+.intro {
+  max-width: 750px;
+  margin: 40px auto;
+  text-align: center;
+  line-height: 1.8;
+  opacity: 0.9;
+}
+
+/* ===== DIVIDER ===== */
+.divider {
+  text-align: center;
+  font-size: 28px;
+  margin: 30px 0;
+  animation: rotate 2s infinite linear;
+}
+
+@keyframes rotate {
+  to { transform: rotate(360deg); }
+}
+
+/* ===== INPUT ===== */
+.input-box {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.input-box input {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.input-box button {
+  padding: 10px 18px;
+  border: none;
+  background: #203a43;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+/* ===== TIMELINE ===== */
+.timeline {
+  max-width: 700px;
+  margin: 60px auto;
+}
+
+.month {
+  background: rgba(255,255,255,0.12);
+  padding: 18px 24px;
+  border-radius: 12px;
+  margin-bottom: 14px;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: showMonth 0.8s forwards;
+}
+
+.month span {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 6px;
+}
+
+@keyframes showMonth {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== MESSAGE CARD ===== */
+.card {
+  max-width: 750px;
+  margin: 60px auto;
+  background: rgba(0,0,0,0.45);
+  padding: 45px;
+  border-radius: 18px;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.6);
+  position: relative;
+  overflow: hidden;
+}
+
+.card video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  filter: brightness(0.35);
+}
+
+.card p {
+  line-height: 1.9;
+  margin-bottom: 18px;
+}
+
+.funny { font-style: italic; color: #ddd; }
+.wish { font-weight: 600; }
+
+.from {
+  text-align: right;
+  margin-top: 30px;
+  font-weight: bold;
+}
+
+/* ===== EMOJIS ===== */
+.emoji {
+  position: fixed;
+  bottom: -40px;
+  font-size: 24px;
+  animation: floatUp 8s linear infinite;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(0); opacity: 0; }
+  10% { opacity: 1; }
+  to { transform: translateY(-110vh); opacity: 0; }
+}
+
+/* ===== FIREWORKS ===== */
+canvas {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* ===== ADDED: FRIENDS WISH STYLE ===== */
+#friendsWish {
+  animation: fadeIn 2s ease forwards;
+}
+</style>
+</head>
+
+<body>
+
+<div id="loader">
+  <h1>Preparing your New Year experience…</h1>
+</div>
+
+<canvas id="fireworks"></canvas>
+
+<section id="app">
+
+  <div class="intro">
+    Every ending carries a story. Every beginning carries hope.  
+    Before we step forward, let us pause and appreciate the journey.
+  </div>
+
+  <div class="hero">
+    <h1 class="year old">Goodbye 2025</h1>
+    <p class="subtitle">Thank you for the lessons, memories, and unexpected twists.</p>
+  </div>
+
+  <div class="divider">⏳</div>
+
+  <div class="hero">
+    <h1 class="year new">Welcome 2026</h1>
+    <p class="subtitle">A fresh chapter with new hopes and better versions of ourselves.</p>
+  </div>
+
+  <div class="input-box">
+    <input type="text" id="name" placeholder="Enter your name">
+    <button onclick="startExperience()">Begin</button>
+  </div>
+
+  <div class="timeline" id="timeline"></div>
+
+  <div class="card" id="message" style="display:none;">
+    <video autoplay muted loop playsinline>
+      <source src="https://cdn.pixabay.com/vimeo/303934558/fireworks-background-14888.mp4" type="video/mp4">
+    </video>
+
+    <p id="personal"></p>
+
+    <p>
+      As the final moments of this year fade away, take a second to breathe,
+      smile, and feel proud of how far you’ve come.
+      Not every day was easy — but you made it, and that itself means everything.
+    </p>
+
+    <p>
+      May 2026 wrap you in peace, fill your days with quiet happiness,
+      and surprise you with moments that make your heart feel full.
+      May your efforts turn into success, your struggles into strength,
+      and your dreams into reality.
+    </p>
+
+    <p class="funny">
+      And may this year finally fix the bugs we ignored,
+      heal what felt heavy, and bring joy without reason.
+    </p>
+
+    <p class="wish">
+      Wishing you and your loved ones a year filled with health,
+      love, growth, and countless reasons to smile. 🌸✨
+    </p>
+
+    <p class="from">
+      With warmth & best wishes,<br>
+      — Mani Agathamudi
+    </p>
+  </div>
+
+  <!-- ===== ADDED: FINAL WISHES FROM THEM ===== -->
+  <div class="card" id="friendsWish" style="display:none;">
+    <p class="wish">💖 A few wishes just for you 💖</p>
+
+    <p>“May this year bring you peace, progress, and happiness.”</p>
+    <p>“Never stop believing in yourself — best things are coming.”</p>
+    <p>“Proud of how far you’ve come. Keep going!”</p>
+
+    <p class="from">— From people who care about you ✨</p>
+  </div>
+
+</section>
+
+<audio id="music" loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+</audio>
+
+<script>
+setTimeout(() => {
+  loader.style.display = "none";
+  app.style.display = "block";
+}, 2500);
+
+const months = [
+  ["January", "New beginnings and hopeful starts"],
+  ["February", "Moments of love and warmth"],
+  ["March", "Small victories that mattered"],
+  ["April", "Lessons that helped us grow"],
+  ["May", "Smiles worth remembering"],
+  ["June", "Mid-year reflections"],
+  ["July", "Strength through challenges"],
+  ["August", "Laughter and celebration"],
+  ["September", "Focus and discipline"],
+  ["October", "Gratitude for progress"],
+  ["November", "Lessons worth keeping"],
+  ["December", "Closure and peace"]
+];
+
+function startExperience() {
+  const name = document.getElementById("name").value || "Dear Friend";
+  document.getElementById("personal").innerHTML = `Dear ${name},<br><br>`;
+  document.getElementById("message").style.display = "block";
+  document.getElementById("friendsWish").style.display = "block";
+  music.play();
+  showMonths();
+  startFireworks();
+}
+
+function showMonths() {
+  months.forEach((m, i) => {
+    const div = document.createElement("div");
+    div.className = "month";
+    div.style.animationDelay = `${i * 0.5}s`;
+    div.innerHTML = `<span>${m[0]}</span>${m[1]}`;
+    timeline.appendChild(div);
+  });
+}
+
+const emojis = ["🎉","✨","🎆","🥂","🎊"];
+setInterval(() => {
+  const e = document.createElement("div");
+  e.className = "emoji";
+  e.innerText = emojis[Math.floor(Math.random()*emojis.length)];
+  e.style.left = Math.random()*100 + "vw";
+  document.body.appendChild(e);
+  setTimeout(() => e.remove(), 8000);
+}, 900);
+
+const canvas = document.getElementById("fireworks");
+const ctx = canvas.getContext("2d");
+canvas.width = innerWidth;
+canvas.height = innerHeight;
+
+function firework() {
+  const x = Math.random() * canvas.width;
+  const y = Math.random() * canvas.height / 2;
+  for (let i = 0; i < 50; i++) {
+    ctx.beginPath();
+    ctx.arc(x, y, Math.random() * 2, 0, Math.PI * 2);
+    ctx.fillStyle = `hsl(${Math.random() * 360},100%,60%)`;
+    ctx.fill();
+  }
+}
+
+function startFireworks() {
+  setInterval(() => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    firework();
+  }, 800);
+}
+</script>
+
+</body>
+</html>
